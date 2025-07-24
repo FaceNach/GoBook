@@ -92,4 +92,35 @@ func main() {
 			fmt.Println(word, "is a long word")
 		}
 	}
+
+	//1. Write a for loop that puts 100 random numbers between 0 and 100 into an int
+	//slice.
+
+	exercise := make([]int, 100)
+
+	for i := 0; i < 100; i++ {
+
+		v := rand.Intn(100)
+		exercise[i] = v
+	}
+
+	for _, value := range exercise {
+		if value%2 == 0 && value%3 == 0 {
+			fmt.Println(value, ": Six!")
+		} else if value%2 == 0 {
+			fmt.Println(value, ": Two!")
+		} else if value%3 == 0 {
+			fmt.Println(value, ": Three!")
+		} else {
+			fmt.Println(value, " :Never mind")
+		}
+
+	}
+
+	var total int
+	for i := 0; i <= 10; i++ {
+		total := total + i
+		fmt.Println(total)
+	}
+
 }
