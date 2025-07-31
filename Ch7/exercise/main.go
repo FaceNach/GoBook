@@ -116,8 +116,9 @@ func main() {
 	}
 
 	lArgentina.MatchResult(union.Name, colon.Name, 89, 80)
-
+	
 	fmt.Println("La liga Argentina")
 	RankPrinter(lArgentina, os.Stdout)
+
 
 }
