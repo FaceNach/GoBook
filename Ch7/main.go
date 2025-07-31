@@ -1,20 +1,62 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
-type Rectangle struct {
-	Width  int
-	Height int
+type Shape interface {
+	Area() float64
 }
 
-func (r Rectangle) Area() int {
+type Testing interface {
+}
+
+type Rectangle struct {
+	Width  float64
+	Height float64
+}
+
+func (r Rectangle) Area() float64 {
 	return r.Width * r.Height
+}
+
+type Circle struct {
+	Radius float64
+}
+
+func (c Circle) Area() float64 {
+	return math.Pi * c.Radius * c.Radius
+}
+
+func calculateArea(s Shape) float64 {
+	return s.Area()
 }
 
 func main() {
 
-	miRectangle := Rectangle{10, 5}
+	r := Rectangle{10, 5}
+	c := Circle{10}
 
-	fmt.Println(miRectangle.Area())
+	fmt.Println("Rectangle area: ", calculateArea(r))
+	fmt.Println("Circle area", calculateArea(c))
+
+	var a Shape = Rectangle{}
+
+	_, ok := a.(Rectangle)
+
+	if ok {
+		fmt.Println("Its a rectangle")
+	} else {
+		fmt.Println("Its not")
+	}
+
+	_, b := a.(Circle)
+
+	if b {
+		fmt.Println("Its a circle")
+	} else {
+		fmt.Println("Its not")
+	}
 
 }
